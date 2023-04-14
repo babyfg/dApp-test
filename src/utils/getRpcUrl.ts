@@ -26,7 +26,7 @@ export const ankrTestnetNodes = [
   ANKR_NETWORK_URLS[SupportedChainId.TESTNET],
 ];
 
-const getNodeUrl = (networkId?: number) => {
+const getNodeUrl = (networkId?: number): string => {
   const chainId = networkId || parseInt(process.env.REACT_APP_CHAIN_ID || '250', 10);
   const nodes = chainId === 250 ? ankrMainnetNodes : ankrTestnetNodes;
   const randomIndex = random(0, nodes.length - 1);

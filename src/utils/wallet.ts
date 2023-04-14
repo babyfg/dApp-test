@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * Prompt the user to add Ethereum as a network on Metamask, or switch to Ethereum if the wallet is on a different network
  * @returns {boolean} true if the setup succeeded, false otherwise
@@ -42,7 +43,7 @@ export const registerToken = async (
   tokenSymbol: string,
   tokenDecimals: number,
   tokenImage: string
-) => {
+): Promise<void> => {
   const tokenAdded = await (window as any).ethereum.request({
     method: 'wallet_watchAsset',
     params: {

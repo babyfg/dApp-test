@@ -43,18 +43,20 @@ export const tokenSlice = createSlice({
 export const { reset, setTokenGlobalData } = tokenSlice.actions;
 
 // fetch global token info
-export const fetchTokenGlobalDataAsync = () => async (dispatch: any) => {
-  const { buyTax, sellTax, price, circulationSupply, totalSupply } = await fetchGlobalTokenData();
+export const fetchTokenGlobalDataAsync =
+  () =>
+  async (dispatch: any): Promise<void> => {
+    const { buyTax, sellTax, price, circulationSupply, totalSupply } = await fetchGlobalTokenData();
 
-  dispatch(
-    setTokenGlobalData({
-      buyTax,
-      sellTax,
-      price,
-      circulationSupply,
-      totalSupply,
-    })
-  );
-};
+    dispatch(
+      setTokenGlobalData({
+        buyTax,
+        sellTax,
+        price,
+        circulationSupply,
+        totalSupply,
+      })
+    );
+  };
 
 export default tokenSlice.reducer;

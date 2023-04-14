@@ -5,10 +5,10 @@ import { activeChainId, mainNetChainId } from 'utils/web3';
 export const getAddress = (address: Address): string =>
   address[activeChainId] ? address[activeChainId] : address[mainNetChainId];
 
-export const getWFTMAddress = () => getAddress(wftmAddr);
+export const getWFTMAddress = (): string => getAddress(wftmAddr);
 
-export const getOBOLAddress = () => getAddress(obolAddr);
+export const getOBOLAddress = (): string => getAddress(obolAddr);
 
-export const getMulticallAddress = () => getAddress(multicallAddr);
+export const getMulticallAddress = (): string => getAddress(multicallAddr);
 
-export const getObolFtmPairAddress = () => getAddress(obolFtmPairAddr);
+export const getObolFtmPairAddress = (): string => getAddress(obolFtmPairAddr);

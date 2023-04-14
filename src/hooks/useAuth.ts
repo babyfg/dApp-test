@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useCallback } from 'react';
 import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core';
 import {
@@ -10,7 +11,7 @@ import { connectorLocalStorageKey } from 'config/constants/wallet';
 import { connectorsByName } from 'utils/web3React';
 import { setupNetwork } from 'utils/wallet';
 
-const useAuth = () => {
+const useAuth = (): { login: any; logout: any } => {
   const { activate, deactivate } = useWeb3React();
 
   const activateInjectedProvider = (connectorID?: string) => {

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { getFTMPriceFromCGC } from 'utils/coingecko';
 
-const useTokenPrice = () => {
+const useTokenPrice = (): { tokenPrices: any } => {
   const [tokenPrices, setTokenPrice] = useState({ FTM: 0 });
 
   const fetchTokenPrice = async () => {

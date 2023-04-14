@@ -2,6 +2,7 @@ import { InjectedConnector } from '@web3-react/injected-connector';
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
 import { WalletLinkConnector } from '@web3-react/walletlink-connector';
 import Web3 from 'web3';
+
 import { ConnectorNames } from 'types/wallet';
 import getNodeUrl from 'utils/getRpcUrl';
 import OBOL_LOGO_URL from 'assets/images/logo.svg';

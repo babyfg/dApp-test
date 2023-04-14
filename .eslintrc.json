@@ -26,6 +26,7 @@
       }
     ],
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
     "comma-dangle": "off",
     "import/prefer-default-export": "off",
     "no-multiple-empty-lines": [
@@ -50,6 +51,7 @@
         "custom": "ignore"
       }
     ],
+
     "react/jsx-sort-props": [
       "error",
       {

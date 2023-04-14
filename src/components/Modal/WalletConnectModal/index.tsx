@@ -48,14 +48,8 @@ const ConnectModal: React.FC<Props> = ({ login }) => {
         <ModalTitle>Connect Wallet</ModalTitle>
       </Box>
       <Box sx={{ marginTop: '24px' }}>
-        {config.map((entry, index) => (
-          <WalletCard
-            key={entry.title}
-            login={login}
-            mb={index < config.length - 1 ? '8px' : '0'}
-            onDismiss={onDismiss}
-            walletConfig={entry}
-          />
+        {config.map((entry) => (
+          <WalletCard key={entry.title} login={login} onDismiss={onDismiss} walletConfig={entry} />
         ))}
       </Box>
     </ModalDialog>

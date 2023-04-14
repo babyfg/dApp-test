@@ -1,7 +1,7 @@
 import Web3 from 'web3';
 import { HttpProviderOptions } from 'web3-core-helpers';
 import { AbiItem } from 'web3-utils';
-import { ContractOptions } from 'web3-eth-contract';
+import { Contract, ContractOptions } from 'web3-eth-contract';
 
 import getRpcUrl from 'utils/getRpcUrl';
 import { SupportedChainId } from 'config/constants/chains';
@@ -17,15 +17,15 @@ const testNetChainId = 4002;
 /**
  * Provides a web3 instance using our own private provider httpProver
  */
-const getWeb3 = () => {
+const getWeb3 = (): Web3 => {
   const web3 = new Web3(httpProvider);
   return web3;
 };
-const getContract = (abi: any, address: string, contractOptions?: ContractOptions) => {
+const getContract = (abi: AbiItem, address: string, contractOptions?: ContractOptions): Contract => {
   const web3 = getWeb3();
   return new web3.eth.Contract(abi as unknown as AbiItem, address, contractOptions);
 };
 
-const getWeb3NoAccount = () => web3NoAccount;
+const getWeb3NoAccount = (): Web3 => web3NoAccount;
 
 export { getWeb3, getContract, httpProvider, getWeb3NoAccount, activeChainId, mainNetChainId, testNetChainId };

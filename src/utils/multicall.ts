@@ -10,7 +10,7 @@ interface Call {
   params?: any[]; // Function params
 }
 
-const multicall = async (abi: any[], calls: Call[]) => {
+const multicall = async (abi: any[], calls: Call[]): Promise<any> => {
   const web3 = getWeb3();
   const multi = new web3.eth.Contract(MultiCallAbi as unknown as AbiItem, getMulticallAddress());
   const itf = new Interface(abi);

@@ -1,12 +1,13 @@
+/* eslint-disable no-console */
 import axios from 'axios';
 
-export const getTokenIdFromCGC = (tokenSymbol: string) => {
+export const getTokenIdFromCGC = (tokenSymbol: string): string => {
   if (tokenSymbol === 'FTM') return 'fantom';
 
   return 'fantom';
 };
 
-const getTokenPriceFromCGC = async (tokenId: string) => {
+const getTokenPriceFromCGC = async (tokenId: string): Promise<number> => {
   if (!tokenId) return 0;
   const cgcUrl = `https://api.coingecko.com/api/v3/simple/price?ids=${tokenId}&vs_currencies=usd`;
   try {
@@ -22,4 +23,4 @@ const getTokenPriceFromCGC = async (tokenId: string) => {
   return 0;
 };
 
-export const getFTMPriceFromCGC = async () => getTokenPriceFromCGC(getTokenIdFromCGC('FTM'));
+export const getFTMPriceFromCGC = async (): Promise<number> => getTokenPriceFromCGC(getTokenIdFromCGC('FTM'));

@@ -7,7 +7,13 @@ import { getBalanceInEther } from 'utils/formatBalance';
 
 const TAX_RATIO_DENOMINATOR = 10000;
 
-export const fetchGlobalTokenData = async () => {
+export const fetchGlobalTokenData = async (): Promise<{
+  buyTax: number;
+  sellTax: number;
+  price: number;
+  circulationSupply: number;
+  totalSupply: number;
+}> => {
   // call obol token contract
   const obolAddr = getOBOLAddress();
   const [buyTax, sellTax, totalSupplyRaw] = await multicall(OBOLTokenAbi, [
