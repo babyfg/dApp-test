@@ -14,3 +14,8 @@ export const obolAddr = {
   [SupportedChainId.MAINNET]: '0x1539C63037D95f84A5981F96e43850d1451b6216',
   [SupportedChainId.TESTNET]: '0x1539C63037D95f84A5981F96e43850d1451b6216',
 };
+
+export const obolFtmPairAddr = {
+  [SupportedChainId.MAINNET]: '0xE3E26Bd9cD2F32a8F60BfFf5DF88bB3b3C5Eb9f9',
+  [SupportedChainId.TESTNET]: '0xE3E26Bd9cD2F32a8F60BfFf5DF88bB3b3C5Eb9f9',
+};

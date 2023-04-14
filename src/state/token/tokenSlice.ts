@@ -50,8 +50,6 @@ export const { reset, setTokenGlobalData } = tokenSlice.actions;
 export const fetchTokenGlobalDataAsync = () => async (dispatch: any) => {
   const { buyTax, sellTax, price, marketcap, circulationSupply, totalSupply } = await fetchGlobalTokenData();
 
-  console.log('111--->', buyTax, sellTax, price, marketcap, circulationSupply, totalSupply);
-
   dispatch(
     setTokenGlobalData({
       buyTax,

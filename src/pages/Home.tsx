@@ -6,6 +6,8 @@ import { useAppDispatch, useAppSelector } from 'state/hooks';
 import ObolTokenLogo from 'assets/images/tokens/obol.svg';
 import { setIsWalletConnectModalOpen } from 'state/modal/modalSlice';
 import { shortenAddress } from 'utils/address';
+import { formatBalanceInThousandsSeperator } from 'utils/formatBalance';
+import useTokenPrice from 'hooks/useTokenPrice';
 
 const VaultsContainer = styled('div')(() => ({
   width: '100%',
@@ -134,8 +136,12 @@ const Value = styled(Typography)(() => ({
 const HomePage: FC = () => {
   const dispatch = useAppDispatch();
   const { account } = useWeb3React();
+  const { tokenPrices } = useTokenPrice();
+  const ftmPrice = tokenPrices.FTM;
 
-  const { buyTax, sellTax, price, marketcap, circulationSupply, totalSupply } = useAppSelector((state) => state.token);
+  const { buyTax, sellTax, price, circulationSupply, totalSupply } = useAppSelector((state) => state.token);
+  const obolPrice = price * ftmPrice;
+  const marketcap = obolPrice * totalSupply;
 
   const onConnectWallet = () => {
     if (!account) {
@@ -173,21 +179,21 @@ const HomePage: FC = () => {
               </TaxSection>
               <PriceSection>
                 <Label>Current Price</Label>
-                <Value>{`$${price.toFixed(2)}`}</Value>
+                <Value>{`$${obolPrice.toFixed(2)}`}</Value>
               </PriceSection>
               <Box sx={{ textAlign: 'center' }}>
                 <Box>
                   <Box alignItems="center" display="flex" justifyContent="center">
                     <Label>{`Market Cap: `}</Label>
-                    <Value>{`$${(totalSupply * 0.8).toFixed(0)}`}</Value>
+                    <Value>{`$${formatBalanceInThousandsSeperator(marketcap.toFixed(0))}`}</Value>
                   </Box>
                   <Box alignItems="center" display="flex" justifyContent="center">
                     <Label>{`Cirtulating Supply: `}</Label>
-                    <Value>{`${circulationSupply.toFixed(0)}`}</Value>
+                    <Value>{`$${formatBalanceInThousandsSeperator(circulationSupply.toFixed(0))}`}</Value>
                   </Box>
                   <Box alignItems="center" display="flex" justifyContent="center">
                     <Label>{`Total Supply: `}</Label>
-                    <Value>{`${totalSupply.toFixed(0)}`}</Value>
+                    <Value>{`$${formatBalanceInThousandsSeperator(totalSupply.toFixed(0))}`}</Value>
                   </Box>
                 </Box>
               </Box>

@@ -6,3 +6,8 @@ export const getBalanceInEther = (balance: BigNumber) => {
 };
 
 export const getBalanceInWei = (balance: string, decimals = 18) => ethers.utils.parseUnits(balance, decimals || 18);
+
+export const formatBalanceInThousandsSeperator = (input: number | string | undefined): string => {
+  if (!input) return '0';
+  return String(input).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
