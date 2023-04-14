@@ -151,8 +151,8 @@ const HomePage: FC = () => {
 
   return (
     <VaultsContainer>
-      <Grid container>
-        <Grid item xs={4}>
+      <Grid container justifyContent="center">
+        <Grid item lg={4} md={6} xs={12}>
           <TokenCard>
             <CardHeader>
               <CardTitle>OBOL</CardTitle>
